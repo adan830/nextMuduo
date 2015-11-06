@@ -25,12 +25,12 @@ ConnectionHandler::ConnectionHandler(std::shared_ptr<EventLoop> loop, int sockfd
 
 ConnectionHandler::~ConnectionHandler()
 {
-    LOG_DEBUG << std::endl;
+    LOG_CURRENT_LINE
 }
 
 void ConnectionHandler::handleRead()
 {
-    LOG_DEBUG << std::endl;
+    LOG_CURRENT_LINE
     int sockfd = _channel->getfd();
     int readlength;
     char line[MAX_READ_BUFFER_SIZE];
@@ -60,12 +60,12 @@ void ConnectionHandler::handleRead()
 
 void ConnectionHandler::handleWrite()
 {
-    LOG_DEBUG << std::endl;
+    LOG_CURRENT_LINE
     int sockfd = _channel->getfd();
     if(_channel->isWriting()) {
         int n = ::write(sockfd, _outBuffer.peek(), _outBuffer.readableBytes());
         if( n > 0) {
-            LOG_DEBUG << "write " << n << " bytes" <<endl;   
+            LOG_DEBUG << "write " << n << " bytes" <<endl;
             _outBuffer.retrieve(n);
             if(_outBuffer.readableBytes() == 0) {
                 _channel->disableWriting();
@@ -78,7 +78,7 @@ void ConnectionHandler::handleWrite()
 
 void ConnectionHandler::send(const std::string& data)
 {
-    LOG_DEBUG << std::endl;
+    LOG_CURRENT_LINE
     if(_loop->isInLoopThread())
     {
         LOG_DEBUG << "isInLoopThread" << std::endl;
@@ -94,7 +94,7 @@ void ConnectionHandler::send(const std::string& data)
 
 void ConnectionHandler::sendInLoop(const string& data)
 {
-    LOG_DEBUG << std::endl;
+    LOG_CURRENT_LINE
     int n = 0;
     if(_outBuffer.readableBytes() == 0)
     {
@@ -121,6 +121,7 @@ void ConnectionHandler::sendInLoop(const string& data)
 
 void ConnectionHandler::onWriteComplete()
 {
+    LOG_CURRENT_LINE
     if(writeCompleteCallback_) writeCompleteCallback_(shared_from_this());
 }
 

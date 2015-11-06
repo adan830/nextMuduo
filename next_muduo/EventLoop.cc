@@ -26,7 +26,7 @@ EventLoop::EventLoop()
 
 EventLoop::~EventLoop()
 {
-    LOG_DEBUG << std::endl;
+    LOG_CURRENT_LINE
 }
 
 void EventLoop::loop()
@@ -62,7 +62,7 @@ void EventLoop::update(std::shared_ptr<Channel> channel)
 
 void EventLoop::handleRead()
 {
-    LOG_DEBUG << std::endl;
+    LOG_CURRENT_LINE
     uint64_t one = 1;
     int n = ::read(_eventfd, &one, sizeof(uint64_t));
     if (n != sizeof(uint64_t)) {
@@ -98,7 +98,7 @@ void EventLoop::queueInLoop(Task& task)
 
 void EventLoop::runInLoop(Task& task)
 {
-    LOG_DEBUG << std::endl;
+    LOG_CURRENT_LINE
     if(isInLoopThread())
     {
         task.performTask();
@@ -112,7 +112,7 @@ void EventLoop::runInLoop(Task& task)
 
 void EventLoop::wakeup()
 {
-    LOG_DEBUG << std::endl;
+    LOG_CURRENT_LINE
     uint64_t one = 1;
     int n = ::write(_eventfd, &one, sizeof(uint64_t));
     if (n != sizeof(uint64_t)) {
@@ -122,7 +122,7 @@ void EventLoop::wakeup()
 
 void EventLoop::doPendingFunctors()
 {
-    LOG_DEBUG << std::endl;
+    LOG_CURRENT_LINE
     vector<Task> tempRuns;
     _callingPendingFunctors = true;
     {

@@ -1,0 +1,10 @@
+examples/echo_client/*.o
+examples/echo_client/*.d
+examples/echo_client/echo-client
+examples/echo_server/*.o
+examples/echo_server/*.d
+next_muduo/*.o
+next_muduo/*.d
+next_muduo/threads/*.o
+next_muduo/threads/*.d
+echo-server

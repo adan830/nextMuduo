@@ -4,7 +4,6 @@
 #include "next_muduo/IEventHandler.h"
 
 #include <memory>
-using namespace std;
 
 namespace nextMuduo {
 

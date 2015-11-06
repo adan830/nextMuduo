@@ -16,19 +16,19 @@ namespace nextMuduo {
 Thread::Thread(std::shared_ptr<Task> task)
     :_task(task)
 {
-    LOG_DEBUG << std::endl;
+    LOG_CURRENT_LINE
 }
 
 Thread::Thread(Task::TaskCB taskCB)
 {
-    LOG_DEBUG << std::endl;
+    LOG_CURRENT_LINE
     _task.reset(new Task(taskCB));
 }
 
 Thread::~Thread()
 {
     join();
-    LOG_DEBUG << std::endl;
+    LOG_CURRENT_LINE
 }
 
 void Thread::start()

@@ -28,7 +28,7 @@ AcceptorHandler::AcceptorHandler(std::shared_ptr<EventLoop> loop)
 
 AcceptorHandler::~AcceptorHandler()
 {
-    LOG_DEBUG << std::endl;
+    LOG_CURRENT_LINE
 }
 
 void AcceptorHandler::start()

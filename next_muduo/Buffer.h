@@ -1,4 +1,5 @@
 #pragma once
+
 #include <string>
 using namespace std;
 
@@ -14,9 +15,9 @@ namespace nextMuduo
         int readableBytes();
         void retrieve(int len);
         void append(const string& data);
-        string retrieveAllAsString();
-        string retrieveAsString(size_t len);
+        std::string retrieveAllAsString();
+        std::string retrieveAsString(size_t len);
     private:
-        string _buf;
+        std::string _buf;
     };
 }

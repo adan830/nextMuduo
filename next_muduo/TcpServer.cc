@@ -15,7 +15,7 @@ TcpServer::TcpServer(std::shared_ptr<EventLoop> loop)
 
 TcpServer::~TcpServer()
 {
-	LOG_DEBUG << std::endl;
+	LOG_CURRENT_LINE
 }
 
 void TcpServer::start()

@@ -2,7 +2,7 @@
 # Copyright (c) 2015
 # # All rights reserved.
 # ######################################
-DESTINATION := next-muduo-client # The name of example
+DESTINATION := echo-client
 SRCDIRS :=
 LIBS :=
 INCLUDES := .

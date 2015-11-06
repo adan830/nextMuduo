@@ -24,7 +24,7 @@ Epoll::Epoll()
 
 Epoll::~Epoll()
 {
-    LOG_DEBUG << std::endl;
+    LOG_CURRENT_LINE
 }
 
 void Epoll::poll(std::vector<Channel*>& channels)

@@ -5,16 +5,17 @@
 
 # Make file for next-muduo examples.
 
-# #目标（可执行文档）名称，源文件目录, 库（譬如stdcx,iostr,mysql等），头文件路径
-DESTINATION := echo_server # The name of example
+# #Target Name, Source File Directories, Library(Such as stdcx,iostr,mysql), Head File Directories.
+# The name of example
+DESTINATION := echo-server
 SRCDIRS := examples/echo_server next_muduo next_muduo/threads
 LIBS := pthread
 INCLUDES := .
 
 RM := rm -f
-#C,CC或CPP文件的后缀
+# Suffix Of Source Files, such as c, cc and cpp, etc.
 PS=cc
-# GNU Make的隐含变量定义
+# GNU Make Variables
 CC=g++
 CPPFLAGS = -g -Wall -O3 -march=x86-64
 CPPFLAGS += $(addprefix -I,$(INCLUDES))
@@ -22,11 +23,11 @@ CPPFLAGS += -MMD
 #CXXFLAGS = $(CPPFLAGS)
 CXXFLAGS += -std=c++11 -Wall
 
-#SOURCE
+#SOURCE Files
 ifeq ($(SRCDIRS),)
 	SRCDIRS = .
 endif
-SOURCE := $(foreach d,$(SRCDIRS),$(wildcard $(addprefix $(d)/*,$(PS))))
+SOURCE := $(foreach d,$(SRCDIRS),$(wildcard $(addprefix $(d)/*.,$(PS))))
 OBJS := $(patsubst %.$(PS),%.o,$(SOURCE))
 DEPS := $(patsubst %.o,%.d,$(OBJS))
 MISSING_DEPS := $(filter-out $(wildcard $(DEPS)),$(DEPS))

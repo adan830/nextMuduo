@@ -6,11 +6,12 @@ ThreadPool::ThreadPool(int maxThreadPoolSize)
     :_aborted(false),
     _maxThreadPoolSize(maxThreadPoolSize)
 {
+    LOG_CURRENT_LINE
 }
 
 ThreadPool::~ThreadPool()
 {
-    LOG_DEBUG << std::endl;
+    LOG_CURRENT_LINE
     abort();
 }
 

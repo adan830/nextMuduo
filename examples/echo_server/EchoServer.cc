@@ -23,7 +23,7 @@ EchoServer::EchoServer(std::shared_ptr<EventLoop> eventLoop)
 
 EchoServer::~EchoServer()
 {
-    LOG_DEBUG << std::endl;
+    LOG_CURRENT_LINE
 }
 
 void EchoServer::start()
@@ -40,7 +40,7 @@ void EchoServer::start()
 
 void EchoServer::onConnection(std::shared_ptr<ConnectionHandler> conn)
 {
-    LOG_DEBUG << std::endl;
+    LOG_CURRENT_LINE
 }
 
 void EchoServer::onMessage(std::shared_ptr<ConnectionHandler> conn, Buffer& buf)
@@ -62,7 +62,7 @@ void EchoServer::onMessage(std::shared_ptr<ConnectionHandler> conn, Buffer& buf)
 
 void EchoServer::onWriteComplete(std::shared_ptr<ConnectionHandler> conn) 
 {
-    LOG_DEBUG << std::endl;
+    LOG_CURRENT_LINE
 }
 
 //fib is short for Fibonacci, fib is a CPU busy method
@@ -73,7 +73,7 @@ int fib(int n)
 
 void EchoServer::process(const string& str, std::shared_ptr<ConnectionHandler> conn)
 {
-    LOG_DEBUG << std::endl;
+    LOG_CURRENT_LINE
     //IO blocking task or CPU busy task
     //LOG_DEBUG << "fib(30) = " << fib(30) << " tid = " << CurrentThread::tid() << endl;
     conn->send(str);
